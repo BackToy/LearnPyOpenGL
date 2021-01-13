@@ -38,20 +38,31 @@ def drawtriangle():
     """绘制三角形"""
     glBegin(GL_TRIANGLES)
     glColor3f(0, 0, 1)  # 设置画笔颜色为蓝色
-    glVertex2f(-1.0, 0.0)  # 起始点坐标
-    glVertex2f(-0.5, 0.0)  # 终点坐标
-    glVertex2f(1.0, 1.0)  # 终点坐标
+    glVertex2f(-1.0, 0.0)
+    glVertex2f(-0.5, 0.0)
+    glVertex2f(1.0, 1.0)
+    glEnd()
+
+
+def drawquad():
+    """绘制四边形"""
+    glBegin(GL_QUADS)
+    glColor3f(0, 1, 1)  # 设置画笔颜色为青蓝色
+    glVertex2f(0.5, 0.0)
+    glVertex2f(0.5, -0.8)
+    glVertex2f(1.0, -0.8)
+    glVertex2f(1.0, 0.0)
     glEnd()
 
 
 def update():
-    #绘制坐标系
     print("4")
     glClear(GL_COLOR_BUFFER_BIT)  # 清除上次显示的结果
 
     drawpoint()
     drawline()
     drawtriangle()
+    drawquad()
 
     glFlush()  # 将草图上的内容进行绘制，不调用的话不会进行绘制
 
