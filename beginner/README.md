@@ -14,17 +14,27 @@ glutInitWindowSize(600, 250)  #
 glutInitWindowPosition(200, 400)    # 
 ```
 ### [点线面](./plp.py)
-在[写给 python 程序员的 OpenGL 教程](https://xufive.blog.csdn.net/article/details/86565130)一文中。作者天元浪子给出了10中基本图形的绘制函数列表，这里对部分函数做一些举例。
+在[用PyOpenGL叩开3D的心扉——OpenGL全解析4](https://eyehere.net/2011/learn-opengl-3d-by-pyopengl-4/)一文中。作者给出了10中基本图形的绘制函数列表及其对应的结果，这里对部分函数做一些举例。
 #### 运行流程
 里面用print大法对程序运行结构做了一个探究，程序在注册回调函数时并没有调用它，而是在进入glutMainLoop()之后才调用了回调函数，至于glutMainLoop()之后的3根本没有出现，也就是说程序一直在进行Loop。
 #### 颜色
-颜色有两类好几种实现方法，RGB（红绿蓝）或者RGBA（多一个不透明度）
+如果不指定颜色，OpenGL默认前景色为白色，背景色为黑色。颜色有两类好几种实现方法，RGB（红绿蓝）或者RGBA（多一个不透明度）
 glColor打头，3、4表示参数个数，f代表[0,1]区间的浮点数，ub表示[0,255]之间的无符号整形吧？？更多详见[openGL 函数-glVertex* 指定顶点的值](https://blog.csdn.net/qq844352155/article/details/28465919)
 ```python
 glColor4f(0.0, 1.0, 0.0, 1.0)  # 设置画笔颜色为绿色，不透明度为1
 glColor3f(0.0, 1.0, 0.0)
 glColor3ub(0, 255, 0)
 glColor3fv([0.0, 1.0, 0.0])
+```
+颜色填充与否取决于设置，默认为颜色填充，可设置为不填充，此设置会保留
+```python
+glPolygonMode(GL_FRONT, GL_LINE)  # 设置不填充模式
+glPolygonMode(GL_BACK, GL_FILL)
+```
+如果之前设置了不填充画了一个球，现在想画一个填充的爱心，那就的重新设置为填充模式了
+```python
+glPolygonMode(GL_FRONT, GL_FILL)  # 设置填充
+glPolygonMode(GL_BACK, GL_LINE)
 ```
 #### 点的坐标
 `glVertex2f(-1.0, -1.0)`表示给出的点的坐标为(-1.0, -1.0)-窗体左下角，右上角为(1.0, 1.0)
@@ -61,4 +71,5 @@ def drawquad():
 - [openGL 函数-glVertex* 指定顶点的值](https://blog.csdn.net/qq844352155/article/details/28465919)
 - [Python中的除法](https://blog.csdn.net/sicofield/article/details/8613877)
 - [Python 入门基础知识 - 多媒体编程 - 使用PyOpenGL绘制3D图形](https://www.walkerfree.com/search/?key=opengl&submit=Search)
+- [用PyOpenGL叩开3D的心扉——OpenGL全解析](https://eyehere.net/category/python/)
 - []()

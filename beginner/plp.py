@@ -46,12 +46,33 @@ def drawtriangle():
 
 def drawquad():
     """绘制四边形"""
-    glBegin(GL_QUADS)
+    # 画一个填充的矩形
+    glBegin(GL_QUADS)  # 默认为填充模式
     glColor3f(0, 1, 1)  # 设置画笔颜色为青蓝色
     glVertex2f(0.5, 0.0)
     glVertex2f(0.5, -0.8)
     glVertex2f(1.0, -0.8)
     glVertex2f(1.0, 0.0)
+    glEnd()
+
+    # 画一个矩形的边框
+    glPolygonMode(GL_FRONT, GL_LINE)  # 设置不填充模式
+    glPolygonMode(GL_BACK, GL_FILL)
+    glBegin(GL_QUADS)
+    glVertex2f(0.0, 0.0)
+    glVertex2f(0.0, -0.8)
+    glVertex2f(0.4, -0.8)
+    glVertex2f(0.4, 0.0)
+    glEnd()
+
+    glColor3f(1, 0, 1)  # 设置颜色
+    # glPolygonMode(GL_FRONT, GL_FILL)  # 填充设置，取消注释对比以下
+    # glPolygonMode(GL_BACK, GL_LINE)
+    glBegin(GL_QUADS)
+    glVertex2f(0.1, 0.1)
+    glVertex2f(0.1, -0.5)
+    glVertex2f(0.3, -0.5)
+    glVertex2f(0.3, 0.1)
     glEnd()
 
 
