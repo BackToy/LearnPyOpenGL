@@ -80,6 +80,22 @@ def keydown(key, x, y):
     print("keydown", key, x, y)
 
 
+def mouseenter(enter):
+    """鼠标进入或离开窗体时回调
+    参数：
+        enter：0离开窗体，1进入窗体
+    """
+    print("mouseenter", enter)
+
+
+def mousemove(x, y):
+    """鼠标移动响应事件
+    参数：
+        x, y：鼠标在窗体中的位置坐标
+    """
+    print("mousemove", x, y)
+
+
 glutInit()
 glutInitDisplayMode(GLUT_RGB)
 glutInitWindowSize(WIDTH, HEIGHT)  # 设置窗体大小
@@ -90,5 +106,6 @@ glutReshapeFunc(reshape)  # 注册响应窗口改变的函数reshape()
 glutMouseFunc(mouseclick)  # 注册响应鼠标点击的函数mouseclick()
 glutMotionFunc(mousemotion)  # 注册响应鼠标拖拽的函数mousemotion()
 glutKeyboardFunc(keydown)  # 注册键盘输入的函数keydown()
-
+glutEntryFunc(mouseenter)  # 注册
+glutPassiveMotionFunc(mousemove)  # 注册
 glutMainLoop()
