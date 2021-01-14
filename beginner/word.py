@@ -22,20 +22,6 @@ WIDTH = 400
 HEIGHT = 200
 
 
-def init():
-    """初始化设置"""
-    glClearColor(0.0, 0.0, 0.0, 0.0)  # 设置为黑色背景
-    glClearDepth(1.0)  # 设置深度缓存
-    glDepthFunc(GL_LESS)  # 设置深度测试类型
-    glEnable(GL_DEPTH_TEST)  # 允许深度测试
-    glShadeModel(GL_SMOOTH)  # 启动平滑阴影
-    glMatrixMode(GL_PROJECTION)  # 设置观察矩阵
-    glLoadIdentity()  # 重置观察矩阵
-    # 设置屏幕宽高比
-    gluPerspective(45.0, float(WIDTH) / float(HEIGHT), 0.1, 100.0)
-    glMatrixMode(GL_MODELVIEW)  # 设置观察矩阵
-
-
 def DrawText(string):
     """绘制字符串函数"""
     for c in string:  # 循环处理字符串，每次绘制一个字符
@@ -44,10 +30,6 @@ def DrawText(string):
 
 def Draw():
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)  # 清除颜色和深度缓存
-    # 重置观察矩阵
-    glLoadIdentity()
-    # 移动位置
-    glTranslatef(0.0, 0.0, -1.0)
     # 设置颜色为绿色
     glColor3f(0.0, 1.0, 0.0)
     # 定位文字
@@ -62,6 +44,5 @@ glutInit()
 glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH)
 glutInitWindowSize(WIDTH, HEIGHT)
 window = glutCreateWindow('PyOpenGL Word')
-init()
 glutDisplayFunc(Draw)
 glutMainLoop()
