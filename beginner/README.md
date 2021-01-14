@@ -29,12 +29,13 @@ glColor3fv([0.0, 1.0, 0.0])
 #### 点的坐标
 `glVertex2f(-1.0, -1.0)`表示给出的点的坐标为(-1.0, -1.0)-窗体左下角，右上角为(1.0, 1.0)
 `glVertex3f(-1.0, -1.0, 0.0)`表示点的坐标为(x,y,z)类型，z=0.0时和上面表示一样
+### [键鼠事件](./event.py)
+对对应的事件进行回调函数注册，在回调函数中对全局变量做更新并处理。有鼠标点击（含按下和释放）、拖动、键盘、窗体大小修改事件。窗体拖动和窗体内移动咋整哦-.-
 ## 致谢
 对以下内容的作者表示感谢
 - [写给 python 程序员的 OpenGL 教程](https://xufive.blog.csdn.net/article/details/86565130)
 - [一篇就够的超良心pyOpenGL入门教程，不香喷我！](https://blog.csdn.net/edj_13/article/details/104673528)
-- [Basic OpenGL](http://www.opengl-tutorial.org/beginners-tutorials/)
 - [OpenGL学习进程（3）第一课：初始化窗体](https://www.cnblogs.com/MenAngel/p/5619808.html)
 - [openGL 函数-glVertex* 指定顶点的值](https://blog.csdn.net/qq844352155/article/details/28465919)
-- []()
+- [Python中的除法](https://blog.csdn.net/sicofield/article/details/8613877)
 - []()
