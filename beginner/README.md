@@ -28,9 +28,31 @@ glColor3fv([0.0, 1.0, 0.0])
 ```
 #### 点的坐标
 `glVertex2f(-1.0, -1.0)`表示给出的点的坐标为(-1.0, -1.0)-窗体左下角，右上角为(1.0, 1.0)
-`glVertex3f(-1.0, -1.0, 0.0)`表示点的坐标为(x,y,z)类型，z=0.0时和上面表示一样
+`glVertex3f(-1.0, -1.0, 0.0)`表示点的坐标为(x,y,z)类型，z=0.0时和上面表示一样  
+绘制图形时并不直接给出一串点的坐标，而是通过一个个顶点的方式在glBegain()、glEnd()之间给出，需要注意的是，绘制多边形时是由顶点之间的线段连接起来的，这些线段不能交叉。
+```python
+# 如果把plp.py中的drawquad函数换位以下内容，观察所绘制出的四边形
+def drawquad():
+    """绘制四边形"""
+    glBegin(GL_QUADS)
+    glColor3f(0, 1, 1)  
+    glVertex2f(0.5, 0.0)
+    glVertex2f(0.5, -0.8)
+    glVertex2f(1.0, 0.0)    # 点的顺序发生了变化
+    glVertex2f(1.0, -0.8)
+    glEnd()
+```
 ### [键鼠事件](./event.py)
 对对应的事件进行回调函数注册，在回调函数中对全局变量做更新并处理。有鼠标点击（含按下和释放）、拖动、移动、键盘、窗体大小修改事件。窗体拖动咋整哦-.-
+### [绘制字符串](./word.py)
+使用PyOpenGL绘制非中文字符串
+## flake8 F403 F405
+代码中如果使用flake8检查，会提示大量的F403+F405错误，我是用的是VS Code，在.vscode/setting.json中加入一些设置便可以不提示这两个烦人的红叉叉
+```
+"python.linting.flake8Args": [
+    "--extend-ignore = F403,F405"
+]
+```
 ## 致谢
 对以下内容的作者表示感谢
 - [写给 python 程序员的 OpenGL 教程](https://xufive.blog.csdn.net/article/details/86565130)
@@ -38,4 +60,5 @@ glColor3fv([0.0, 1.0, 0.0])
 - [OpenGL学习进程（3）第一课：初始化窗体](https://www.cnblogs.com/MenAngel/p/5619808.html)
 - [openGL 函数-glVertex* 指定顶点的值](https://blog.csdn.net/qq844352155/article/details/28465919)
 - [Python中的除法](https://blog.csdn.net/sicofield/article/details/8613877)
+- [Python 入门基础知识 - 多媒体编程 - 使用PyOpenGL绘制3D图形](https://www.walkerfree.com/search/?key=opengl&submit=Search)
 - []()
