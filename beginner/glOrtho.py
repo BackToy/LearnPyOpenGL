@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
 # -*- encoding: utf-8 -*-
+'''
+@File    :  glOrtho.py
+@Time    :  2021/01/15 11:06:33
+@Author  :  Kearney
+@Version :  0.0.0
+@Contact :  191615342@qq.com
+@License :  GPL 3.0
+@Desc    :  单击鼠标左键切换不同区域的视景体
+'''
 try:
     from OpenGL.GLUT import *
     from OpenGL.GL import *
