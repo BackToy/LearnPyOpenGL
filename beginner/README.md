@@ -3,7 +3,7 @@
 ### [创建一个窗体](./window.py)
 显示一个最基本的窗体，并对其大小、位置、显示模式进行设置。
 
-常见的窗体模式如下图
+常见的窗体模式如下图  
 ![常见GLUT模式解释](./img/GlutMode.png)
 - GLUT_SINGLE   :   单缓冲区窗口,当不需要用户交互时用单缓冲，需要用户交互时要用双缓冲。
 - GLUT_DOUBLE   :   双缓冲区窗口,这是产生流畅动画必须选的。
@@ -60,7 +60,9 @@ def drawquad():
 glOrtho(left, right, bottom, top, zNear, zFar)、glOrtho2D(left, right, bottom, top)用来创建一个正交的视景体（View Volume），说人话就是用一个长方姓（体）内部区域表示我们能看到的区域，如果要表示的物体大小不变，随着这个视景体区域越大，看到的物体就会越小。
 
 ![glOrthos示意图](./img/glOrtho.drawio.svg)  
-设置视景体之后再次设置视景体会在当前的基础上进行设置，而不是从全局大小上设置，比如先看全局1/4的区域，然后再看1/8的区域，此时看到的全局的1/32，如果想看到全局的1/8，就需要在设置视景体之前重置观察矩阵`glLoadIdentity()`。
+设置视景体之后再次设置视景体会在当前的基础上进行设置，而不是从全局大小上设置，比如先看全局1/4的区域，然后再看1/8的区域，此时看到的全局的1/32，如果想看到全局的1/8，就需要在设置视景体之前重置观察矩阵`glLoadIdentity()`。  
+### [视见区域](./glViewport.py)
+参见[OpenGL的glViewport()函数和glOrtho()函数用法](https://blog.csdn.net/sj19890401/article/details/19976667)
 
 ## flake8 F403 F405
 代码中如果使用flake8检查，会提示大量的F403+F405错误，我是用的是VS Code，在.vscode/setting.json中加入一些设置便可以不提示这两个烦人的红叉叉
