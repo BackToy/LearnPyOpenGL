@@ -4,10 +4,10 @@
 @File    :  cube.py
 @Time    :  2021/01/14 18:04:02
 @Author  :  Kearney
-@Version :  0.0.0
+@Version :  0.0.1
 @Contact :  191615342@qq.com
 @License :  GPL 3.0
-@Desc    :  单击鼠标左键旋转立方体  
+@Desc    :  自动旋转的立方体  
 '''
 try:
     from OpenGL.GLUT import *
@@ -83,8 +83,8 @@ def init():
 def update():
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
-    # 绕x、y轴旋转45度
-    glRotate(45, 1.0, 1.0, 0.0)
+    # 绕x、y轴旋转0.005度
+    glRotate(0.005, 1.0, 1.0, 0.0)
 
     drawColorCube()
     glutSwapBuffers()  # 交换缓存
@@ -96,4 +96,5 @@ glutInitWindowSize(WIDTH, HEIGHT)
 glutCreateWindow('PyOpenGL cube')
 init()
 glutDisplayFunc(update)
+glutIdleFunc(update)  # 设置程序空闲时调用的函数
 glutMainLoop()
