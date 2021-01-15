@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- encoding: utf-8 -*-
 '''
-@File    :  glOrtho.py
-@Time    :  2021/01/15 11:06:33
+@File    :  gluOrtho2D.py
+@Time    :  2021/01/15 12:41:58
 @Author  :  Kearney
 @Version :  0.0.0
 @Contact :  191615342@qq.com
@@ -106,7 +106,7 @@ def update():
 
 glutInit()
 glutInitDisplayMode(GLUT_RGBA)
-glutCreateWindow('PyOpenGL glOrtho')
+glutCreateWindow('PyOpenGL gluOrtho2D')
 glutMouseFunc(mouseclick)  # 注册响应鼠标点击的函数mouseclick()
 glutDisplayFunc(update)  # 注册回调函数
 glutMainLoop()
