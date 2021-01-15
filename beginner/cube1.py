@@ -18,7 +18,7 @@ except Exception as msg:
 
 WIDTH = 400
 HEIGHT = 200
-STATE = 0
+STATE = 1
 
 
 def drawColorCube():
@@ -31,7 +31,7 @@ def drawColorCube():
     glVertex3f(-1.0, 1.0, 1.0)
     glVertex3f(1.0, 1.0, 1.0)
 
-    glColor3f(0.0, 1.0, 0.0)  # 绿色
+    glColor3ub(255, 150, 0)
     glVertex3f(1.0, -1.0, 1.0)
     glVertex3f(-1.0, -1.0, 1.0)
     glVertex3f(-1.0, -1.0, -1.0)
@@ -43,20 +43,19 @@ def drawColorCube():
     glVertex3f(-1.0, -1.0, 1.0)
     glVertex3f(1.0, -1.0, 1.0)
 
-    glColor3f(1.0, 1.0, 0.0)  # 黄色
-
+    glColor3f(0.0, 1.0, 0.0)  # 绿色
     glVertex3f(1.0, -1.0, -1.0)
     glVertex3f(-1.0, -1.0, -1.0)
     glVertex3f(-1.0, 1.0, -1.0)
     glVertex3f(1.0, 1.0, -1.0)
 
-    glColor3f(0.0, 1.0, 1.0)  # 青蓝色
+    glColor3f(1.0, 1.0, 0.0)  # 金黄色
     glVertex3f(-1.0, 1.0, 1.0)
     glVertex3f(-1.0, 1.0, -1.0)
     glVertex3f(-1.0, -1.0, -1.0)
     glVertex3f(-1.0, -1.0, 1.0)
 
-    glColor3f(1.0, 0.0, 1.0)  # 紫色
+    glColor3f(1.0, 1.0, 1.0)  # 白色
     glVertex3f(1.0, 1.0, -1.0)
     glVertex3f(1.0, 1.0, 1.0)
     glVertex3f(1.0, -1.0, 1.0)
@@ -65,14 +64,14 @@ def drawColorCube():
 
 
 def mouseclick(button, state, x, y):
-    """鼠标单击时发生回调：单击鼠标左键，STATE在1~3之间循环
+    """鼠标单击时发生回调：单击鼠标左键，STATE在1~8之间循环
     参数：
         button：0~2，左、中、右键
         state：0按下，1抬起释放
     """
     global STATE
     if state == 0 and button == 0:
-        if STATE < 3:
+        if STATE < 8:
             STATE += 1
         else:
             STATE = 1
@@ -90,9 +89,6 @@ def init():
     # 允许深度测试
     glEnable(GL_DEPTH_TEST)
 
-    glLoadIdentity()  # 重置观察矩阵
-    gluLookAt(3.0, 3.0, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)  # 设置视点与视角
-
     glMatrixMode(GL_PROJECTION)  #  设置为投影模式
     glLoadIdentity()  # 重置观察矩阵
     glFrustum(-1.0, 1.0, -1.0, 1.0, 1.5, 20.0)
@@ -103,14 +99,29 @@ def update():
     global STATE
     print("update", STATE)
     if STATE == 1:  # 根据STATE切换视角
-        glLoadIdentity()
-        gluLookAt(-3.0, 3.0, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)
+        glLoadIdentity()  # 重置观察矩阵
+        gluLookAt(3.0, 3.0, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)  # 设置视点与视角
     elif STATE == 2:
         glLoadIdentity()
-        gluLookAt(3.0, -3.0, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)
+        gluLookAt(3.0, 3.0, -3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)
     elif STATE == 3:
         glLoadIdentity()
+        gluLookAt(-3.0, 3.0, -3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)
+    elif STATE == 4:
+        glLoadIdentity()
+        gluLookAt(-3.0, 3.0, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)
+    elif STATE == 5:
+        glLoadIdentity()
+        gluLookAt(3.0, -3.0, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)
+    elif STATE == 6:
+        glLoadIdentity()
+        gluLookAt(3.0, -3.0, -3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)
+    elif STATE == 7:
+        glLoadIdentity()
         gluLookAt(-3.0, -3.0, -3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)
+    elif STATE == 8:
+        glLoadIdentity()
+        gluLookAt(-3.0, -3.0, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)  # 将画面、深度重置
     drawColorCube()
