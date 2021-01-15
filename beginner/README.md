@@ -56,6 +56,12 @@ def drawquad():
 对对应的事件进行回调函数注册，在回调函数中对全局变量做更新并处理。有鼠标点击（含按下和释放）、拖动、移动、键盘、窗体大小修改事件。窗体拖动咋整哦-.-
 ### [绘制字符串](./word.py)
 使用PyOpenGL绘制非中文字符串
+### [视景体](./glOrtho.py)
+glOrtho(left, right, bottom, top, zNear, zFar)、glOrtho2D(left, right, bottom, top)用来创建一个正交的视景体（View Volume），说人话就是用一个长方姓（体）内部区域表示我们能看到的区域，如果要表示的物体大小不变，随着这个视景体区域越大，看到的物体就会越小。
+
+![glOrthos示意图](./img/glOrtho.drawio.svg)  
+设置视景体之后再次设置视景体会在当前的基础上进行设置，而不是从全局大小上设置，比如先看全局1/4的区域，然后再看1/8的区域，此时看到的全局的1/32，如果想看到全局的1/8，就需要在设置视景体之前重置观察矩阵`glLoadIdentity()`。
+
 ## flake8 F403 F405
 代码中如果使用flake8检查，会提示大量的F403+F405错误，我是用的是VS Code，在.vscode/setting.json中加入一些设置便可以不提示这两个烦人的红叉叉
 ```
@@ -72,4 +78,6 @@ def drawquad():
 - [Python中的除法](https://blog.csdn.net/sicofield/article/details/8613877)
 - [Python 入门基础知识 - 多媒体编程 - 使用PyOpenGL绘制3D图形](https://www.walkerfree.com/search/?key=opengl&submit=Search)
 - [用PyOpenGL叩开3D的心扉——OpenGL全解析](https://eyehere.net/category/python/)
+- [一步步学OpenGL3.3+  - Mr_厚厚](https://blog.csdn.net/cordova/category_9266966.html)
+- [OpenGL的glViewport()函数和glOrtho()函数用法](https://blog.csdn.net/sj19890401/article/details/19976667)
 - []()
