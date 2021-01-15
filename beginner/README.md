@@ -82,12 +82,13 @@ OpenGL里有如下几种矩阵：
 ###### GL_MODELVIEW
 模型观察矩阵，表示物体的位置变化和观察点的改变；
 ###### GL_PROJECTION
-投影矩阵，描述如何将一个物体投影到平面上；通常会配合[glFrustum(left,right,bottom,top,zNear,zFar)](https://baike.baidu.com/item/glFrustum)、gluPerspective()设置一个棱台一样的视景体区域
+投影矩阵，描述如何将一个物体投影到平面上；通常会配合[glFrustum(left,right,bottom,top,zNear,zFar)](https://baike.baidu.com/item/glFrustum)、[gluPerspective(GLdouble fovy, GLdouble aspect, GLdouble zNear, GLdouble zFar)](https://blog.csdn.net/tyxkzzf/article/details/40921713)设置一个棱台一样的视景体区域
 ###### GL_TEXTURE
 纹理矩阵，描述纹理坐标的动态变化
 #### demo
 [基础立方体](./cube0.py)：绘制一个立方体，设置透视投影  
 [带消隐立方体](./cube1.py)：彩色立方体加上遮挡关系（用Zbuffer深度来实现消隐），单击鼠标切换视角  
+[带消隐立方体2](./cube.py)：单击鼠标左键旋转立方体  
 ## flake8 F403 F405
 代码中如果使用flake8检查，会提示大量的F403+F405错误，我是用的是VS Code，在.vscode/setting.json中加入一些设置便可以不提示这两个烦人的红叉叉
 ```
@@ -109,5 +110,7 @@ OpenGL里有如下几种矩阵：
 - [OpenGL学习(三)三维编程基础](https://blog.51cto.com/6996127/1546600)
 - [Opengl---gluLookAt函数详解](https://blog.csdn.net/ivan_ljf/article/details/8764737)
 - [OpenGl的glMatrixMode()函数理解](https://blog.csdn.net/jiangdf/article/details/8460012)
-- [](https://blog.csdn.net/dalong10/category_7610839.html)
+- [Python之OpenGL笔记](https://blog.csdn.net/dalong10/category_7610839.html)
+- []()
+- []()
 - []()
