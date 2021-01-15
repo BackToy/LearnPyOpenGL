@@ -7,10 +7,11 @@
 @Version :  0.0.0
 @Contact :  191615342@qq.com
 @License :  GPL 3.0
-@Desc    :  单击鼠标左键切换不同区域的视景体-3D
+@Desc    :  单击鼠标左键切换不同区域的视景体-2D
 '''
 try:
     from OpenGL.GLUT import *
+    from OpenGL.GLU import *
     from OpenGL.GL import *
 
 except Exception as msg:
@@ -88,10 +89,10 @@ def update():
     """根据STATE的值设置不同的视景体，STATE默认为0"""
     if STATE == 1:  # 取消掉下面两行注释你发现了什么？？？
         # glLoadIdentity()  # 重置观察矩阵
-        glOrtho(0.0, 1.0, -1.0, 0.0, -1.0, 1.0)
+        gluOrtho2D(0.0, 1.0, -1.0, 0.0)
     elif STATE == 2:
         # glLoadIdentity()  # 重置观察矩阵
-        glOrtho(0.0, 0.6, -0.6, 0.0, -1.0, 1.0)
+        gluOrtho2D(0.0, 0.6, -0.6, 0.0)
     elif STATE == 3:
         glLoadIdentity()  # 重置观察矩阵
 
